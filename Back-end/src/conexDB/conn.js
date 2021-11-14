@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/licenciasdb",
   {
     useNewUrlParser: true,
@@ -6,7 +6,7 @@ mongoose.connect("mongodb://localhost:27017/licenciasdb",
     useUnifiedTopology: true,
     //useFindAndModify: false,
   },
-  (err, res) => {
+  function (err, res) {
     if (err) {
       throw err;
     } else {
