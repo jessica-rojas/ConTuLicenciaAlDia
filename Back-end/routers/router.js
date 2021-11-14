@@ -2,4 +2,9 @@ const { Router } = require("express");
 const router = Router();
 var controllerlicencia = require("../controllers/controllerlicencia");
 router.get("/prueba", controllerlicencia.prueba);
-export default router;
+router.post('/crear',controllerlicencia.savelicencia);
+router.post('/buscar/:id',controllerlicencia.buscarlicencia);
+router.post('/buscar/:id?',controllerlicencia.listarlicencias);
+
+//var controlleradmin = require("../controllers/controlleradmin");
+module.exports = router;
