@@ -1,19 +1,29 @@
 const express= require('express')
-const passport = require('passport');//login
-const cookieParser = require('cookie-parser');//login
-const session = require('express-session');
-const passportLocal = require('passport').Strategy;//login
+//const passport = require('passport');//login
+//const cookieParser = require('cookie-parser');//login
+//const session = require('express-session');
+//const passportLocal = require('passport').Strategy;//login
 
+const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 
-var app = express();
+const app = express();
 var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
+//var mongoose = require("mongoose");
   //methodOverride = require("method-override");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const mongo_uri = 'mongodb://localhost:27017/licenciasdb'
 
+mongoose.connect(mongo_uri, function(err){
+  if (err){
+    throw err;
+  }else {
+    console.log('Successfully connected to ${mongo_uri}');
+  }
+});
 // Configurar cabeceras y cors
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -31,21 +41,21 @@ module.exports = app;
 
 
 //leer datos de un formulario
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
 
-app.use(cookieParser(''));
+//app.use(cookieParser(''));
 
 
 //comportamiento de la sesion
-app.use(session({
-  secret: 'es secrto',
-  resave: true,
-  saveUninitialized: true,
-}));
+//app.use(session({
+//  secret: 'es secrto',
+//  resave: true,
+//  saveUninitialized: true,
+//}));
 
 
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 // passport.use(new PassportLocal(function(username,password,done) {
 //   done()
