@@ -4,6 +4,7 @@ var path = require('path');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
+
 const app = express();
 var bodyParser = require("body-parser");
 //var mongoose = require("mongoose");
@@ -12,9 +13,8 @@ var bodyParser = require("body-parser");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, 'public/index.html')));
-
-const mongo_uri = 'mongodb://localhost:27017/licenciasdb'
+app.set(express.static(path.join(__dirname, 'public/index.html')));
+const mongo_uri = ('mongodb://localhost:27017/licenciasdb');
 
 mongoose.connect(mongo_uri, function(err){
   if (err){

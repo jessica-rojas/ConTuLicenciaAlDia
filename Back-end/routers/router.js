@@ -7,6 +7,7 @@ router.post('/buscar/:id',controllerlicencia.buscarlicencia);
 router.post('/buscarg/:id?',controllerlicencia.listarlicencias);
 router.put('/updatelicencia/:id', controllerlicencia.licencia.updatelicencia);
 
+
 var controlleradmin = require("../controllers/controlleradmin");
 router.get("/pruebaadmin", controlleradmin.pruebadmin);
 router.post("/buscaradmin/:id", controlleradmin.buscaradmin);
