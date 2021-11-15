@@ -2,9 +2,9 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var AdministradorSchema = Schema({
   nombrecompleto: String,
-  edad: Integer ,
+  edad: Number,
   email: String,
   contraseña: String,
 });
-const Admin = mongoose.model("carerra", AdministradorSchema);
+const Admin = mongoose.model("administrador", AdministradorSchema);
 module.exports = Admin;

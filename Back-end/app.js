@@ -1,8 +1,8 @@
-var xpress= require('express')
-var passport = require('passport');//login
-var cookieParser = require('cookie-parser');//login
-var session = require('express-session');
-var passportLocal = require('passport').Strategy;//login
+const express= require('express')
+const passport = require('passport');//login
+const cookieParser = require('cookie-parser');//login
+const session = require('express-session');
+const passportLocal = require('passport').Strategy;//login
 
 
 var app = express();
@@ -44,8 +44,8 @@ app.use(session({
 }));
 
 
-app.uset(passport.initialize());
-app.uset(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // passport.use(new PassportLocal(function(username,password,done) {
 //   done()
