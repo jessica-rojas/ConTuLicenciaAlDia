@@ -1,9 +1,6 @@
 const express= require('express')
-//const passport = require('passport');//login
-//const cookieParser = require('cookie-parser');//login
-//const session = require('express-session');
-//const passportLocal = require('passport').Strategy;//login
-
+const session = require('express-session');
+var path = require('path');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
@@ -14,6 +11,8 @@ var bodyParser = require("body-parser");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, 'public/index.html')));
 
 const mongo_uri = 'mongodb://localhost:27017/licenciasdb'
 
@@ -43,28 +42,6 @@ module.exports = app;
 //leer datos de un formulario
 app.use(express.urlencoded({extended: false}));
 
-//app.use(cookieParser(''));
-
-
-//comportamiento de la sesion
-//app.use(session({
-//  secret: 'es secrto',
-//  resave: true,
-//  saveUninitialized: true,
-//}));
-
-
-//app.use(passport.initialize());
-//app.use(passport.session());
-
-// passport.use(new PassportLocal(function(username,password,done) {
-//   done()
-//   if(username == "codigo facilito" and password == "123456"){
-
-//   }
-// }));
-
-
 
 app.set('view engine', 'ejs');
 //login 
@@ -75,7 +52,7 @@ app.get("/", function (req, res) {
 )
 app.get('/login', function (req, res) {
     //mostrar formulario de login
-    res.render(login);
+    res.render(index);
   },
 
 app.post('/login', function (req, res) {
