@@ -54,10 +54,10 @@ En esta vista se debe tener una tabla donde muestre las licencias de construcci�
 
 # Colaboradores
 
-|     NOMBRE       |FUNCION                                                 |
-|----------------|-------------------------------|-------------|
-|Kevin Caicedo Diago|`DESARROLLADOR / SCRUM MASTER`            |           
-|David Blandon  Bañol        |`DESARROLLADOR`            |       
+|     NOMBRE       |FUNCION          |
+|----------------|-------------------------------|
+|Kevin Caicedo Diago|`DESARROLLADOR / SCRUM MASTER` |           
+|David Blandon  Bañol        |`DESARROLLADOR` |       
 |Jessica Rojas Aristizabal       |`DESARROLLADOR`|
 
 # Documentación
