@@ -1,3 +1,5 @@
+const { Mongoose } = require("mongoose");
+const licencia = {};
 const Licencia = require("../models/licencia");
 
 function prueba(req, res) {
@@ -54,22 +56,32 @@ function listarlicencias(req, res) {
     }
   });
 }
-function updatelicencia(req, res) {
-  var id = mongoose.Types.ObjectId(req.query.productId);
-  Licencia.findOneAndUpdate(
-    { _id: id },
-    req.body,
-    { new: true },
-    function (err, Licencia) {
-      if (err) res.send(err);
-      res.json(Licencia);
-    }
-  );
-}
+licencia.updatelicencia = async (req, res) => {
+  const { id } = req.params;
+  const licence = {
+    numero_secuencial: req.body.numero_secuencial,
+    fecha_expedicion: req.body.fecha_expedicion,
+    Tipo: req.body.Tipo,
+    modalidad: req.body.modalidad,
+    vigencia: req.body.vigencia,
+    nombre_completo_propietario: req.body.nombre_completo_propietario,
+    identificacion_propietario: req.body.identificacion_propietario,
+    nombre_urbanizacion: req.body.nombre_urbanizacion,
+    direccion_predio: req.body.direccion_predio,
+    descripcion: req.body.descripcion,
+    planos: req.body.planos,
+    supervicion_tecnica: req.body.supervicion_tecnica,
+    certificado_ocupacion: req.body.certificado_ocupacion,
+  };
+  await Licencia.findByIdAndUpdate(id, { $set: licence }, { new: true });
+  res.json({
+    status: "LicenciaUpdate",
+  });
+};
 module.exports = {
   prueba,
   savelicencia,
   buscarlicencia,
   listarlicencias,
-  updatelicencia,
+  licencia,
 };
