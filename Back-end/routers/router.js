@@ -13,3 +13,4 @@ router.get("/pruebaadmin", controlleradmin.pruebadmin);
 router.post("/buscaradmin/:id", controlleradmin.buscaradmin);
 router.put('/updateadmin/:id', controlleradmin.administrador.updateadmin);
 module.exports = router;
+

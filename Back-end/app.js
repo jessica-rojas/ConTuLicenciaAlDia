@@ -13,16 +13,16 @@ var bodyParser = require("body-parser");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.set(express.static(path.join(__dirname, 'public/index.html')));
-const mongo_uri = ('mongodb://localhost:27017/licenciasdb');
+//app.set(express.static(path.join(__dirname, 'public/index.html')));
+//const mongo_uri = ('mongodb://localhost:27017/licenciasdb');
 
-mongoose.connect(mongo_uri, function(err){
-  if (err){
-    throw err;
-  }else {
-    console.log('Successfully connected to ${mongo_uri}');
-  }
-});
+//mongoose.connect(mongo_uri, function(err){
+//  if (err){
+//    throw err;
+//  }else {
+//    console.log('Successfully connected to ${mongo_uri}');
+//  }
+//});
 // Configurar cabeceras y cors
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -35,7 +35,6 @@ app.use(function (req, res, next) {
     next();
   });
 app.use(require('./routers/router'));
-module.exports = app;
 
 
 
@@ -45,11 +44,12 @@ app.use(express.urlencoded({extended: false}));
 
 app.set('view engine', 'ejs');
 //login 
-app.get("/", function (req, res) {
-    //sí ya iniciamos, dar vista unica
+app.get(('/users/signin'), function (req, res) {
+  return res.sendFile(path.join(__dirname, 'users/signin.hbs'));
+      //sí ya iniciamos, dar vista unica
     //si el login sale mal, redirecion
-  }
-)
+  });
+
 app.get('/login', function (req, res) {
     //mostrar formulario de login
     res.render(index);
@@ -58,3 +58,8 @@ app.get('/login', function (req, res) {
 app.post('/login', function (req, res) {
     //recibir credenciales e inicior sesion 
   }))
+
+
+
+
+  module.exports = app;
